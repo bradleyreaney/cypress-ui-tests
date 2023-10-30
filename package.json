@@ -4,17 +4,19 @@
   "description": "Cypress UI Tests",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "open": "npx cypress open",
+    "run": "npx cypress run"
   },
   "repository": {
     "type": "git",
-    "url": "TODO"
+    "url": "https://github.com/bradleyreaney/cypress-ui-tests.git"
   },
   "author": "Bradley Reaney",
   "license": "ISC",
   "dependencies": {
-    "@types/bluebird": "^3.5.36",
-    "casual": "^1.6.2",
-    "cypress": "^9.4.1"
+    "casual": "^1.6.2"
+  },
+  "devDependencies": {
+    "cypress": "^13.3.3"
   }
 }
