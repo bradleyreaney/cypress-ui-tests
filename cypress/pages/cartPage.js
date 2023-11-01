@@ -12,15 +12,16 @@ const purchaseConfirmation = '.sweet-alert > h2';
 const purchaseConfirmationOk = '.confirm';
 
 export default class CartPage {
+
     getPlaceOrderButton() {
         return cy.get(placeOrderButton)
-                 .should('have.text', 'Place Order');
+            .should('have.text', 'Place Order');
     }
 
     getOrderName() {
         return cy.get(orderName);
     }
-    
+
     getOrderCountry() {
         return cy.get(orderCountry);
     }
@@ -40,35 +41,31 @@ export default class CartPage {
     getOrderYear() {
         return cy.get(orderYear);
     }
-    
+
     getPurchaseConfirmationMessage() {
         return cy.get(purchaseConfirmation);
     }
 
     getPurchaseConfirmationOk() {
         return cy.wait(500)
-                 .get(purchaseConfirmationOk)
+            .get(purchaseConfirmationOk);
     }
 
-    clickPlaceOrderButton() {
-        this.getPlaceOrderButton()
-            .click()
+    completeOrderForm(specOptions) {
+        cy.wait(1000);
+        this.getOrderCountry().type(specOptions.orderCountry).should('have.value', specOptions.orderCountry)
+        this.getOrderName().type(specOptions.orderName).should('have.value', specOptions.orderName)
+        this.getOrderCity().type(specOptions.orderCity).should('have.value', specOptions.orderCity)
+        this.getOrderCreditCard().type(specOptions.orderCard).should('have.value', specOptions.orderCard)
+        this.getOrderMonth().type(specOptions.orderMonth).should('have.value', specOptions.orderMonth)
+        this.getOrderYear().type(specOptions.orderYear).should('have.value', specOptions.orderYear)
+        cy.get(purchaseButton).click();
     }
 
-    completeOrderForm(orderName, orderCountry, orderCity, orderCard, orderMonth, orderYear) {
-        this.getOrderName().type(orderName).should('have.value', orderName)
-        this.getOrderCountry.type(orderCountry).should('have.value', orderCountry)
-        this.getOrderCity.type(orderCity).should('have.value', orderCity)
-        this.getOrderCreditCard.type(orderCard).should('have.value', orderCard)
-        this.getOrderMonth.type(orderMonth).should('have.value', orderMonth)
-        this.getOrderYear.type(orderYear).should('have.value', orderYear)
-        cy.get(purchaseButton).click()
-    }
-             
     confirmOrderFormCompletion() {
         this.getPurchaseConfirmationMessage()
             .should('include.text', 'Thank you for your purchase!');
-        this.clickPlaceOrderButton()
+        this.getPurchaseConfirmationOk()
             .click();
     }
 }

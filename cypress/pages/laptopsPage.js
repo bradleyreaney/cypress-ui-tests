@@ -1,22 +1,15 @@
 /// <reference types="cypress" />
 
+const addToCart = ".col-sm-12 > .btn"
+
 export default class LaptopPage {
 
     getAddToCart() {
-        return cy.get('.col-sm-12 > .btn')
-                 .should('have.text', 'Add to cart')
-    }
-    
-    selectLaptop(laptopName) {
-        cy.contains(laptopName)
-            .should('be.visible')
-            .click()
-        cy.url()
-            .should('include', 'prod')
+        return cy.get(addToCart);
     }
 
-    addLaptopToCart() {
-        this.getAddToCart()
-            .click()
+    selectLaptop(specOptions) {
+        return cy.contains(specOptions.laptopName)
+            .should('be.visible')
     }
 }

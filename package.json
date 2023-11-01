@@ -4,8 +4,8 @@
   "description": "Cypress UI Tests",
   "main": "index.js",
   "scripts": {
-    "open": "npx cypress open",
-    "run": "npx cypress run"
+    "test": "npx cypress run",
+    "open": "npx cypress open"
   },
   "repository": {
     "type": "git",
@@ -17,6 +17,6 @@
     "casual": "^1.6.2"
   },
   "devDependencies": {
-    "cypress": "^13.3.3"
+    "cypress": "^13.4.0"
   }
 }

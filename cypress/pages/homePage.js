@@ -13,11 +13,11 @@ export default class HomePage {
         return cy.get(brandTitle);
     }
 
-    openNotebookCategory() {
-        cy.get(notebookCategory).click()
+    getNotebookCategory() {
+        return cy.get(notebookCategory);
     }
 
-    openCart() {
-        cy.get(cart).click()
+    getCart() {
+        return cy.get(cart);
     }
 }
